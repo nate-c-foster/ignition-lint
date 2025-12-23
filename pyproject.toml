@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "ignition-lint"
-version = "0.1.0"
+name = "ignition-linter"
+version = "0.1.1"
 description = "A linter for Ignition JSON files"
-authors = ["Eric Knorr", "Alex Spyksma"]
+authors = ["Eric Knorr", "Alex Spyksma", "Nate Foster"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/design-group/ignition-lint"
+homepage = "https://github.com/nate-c-foster/ignition-lint"
 packages = [{ include = "ignition_lint", from = "src" }]
 
 [tool.poetry.dependencies]
@@ -22,7 +22,7 @@ yapf = "*"
 poetry-plugin-export = ">=1.8"
 
 [tool.poetry.scripts]
-ignition-lint = "ignition_lint.cli:main"
+ignition-linter = "ignition_lint.cli:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -15,16 +15,16 @@ Ignition Lint is a Python framework designed to analyze and lint Ignition Perspe
 #### Option 1: Install from PyPI (Recommended for Users)
 ```bash
 # Install the package
-pip install ignition-lint
+pip install ignition-linter
 
 # Verify installation
-ignition-lint --help
+ignition-linter --help
 ```
 
 #### Option 2: Development Setup with Poetry
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/design-group/ignition-lint.git
+   git clone https://github.com/nate-c-foster/ignition-lint.git
    cd ignition-lint
    ```
 
@@ -40,7 +40,7 @@ ignition-lint --help
 
 4. **Verify installation:**
    ```bash
-   poetry run python -m ignition_lint --help
+   poetry run python -m ignition_linter --help
    ```
 
 ### Development Setup
@@ -616,29 +616,29 @@ This package can be utilized in several ways to fit different development workfl
 #### Using the Installed Package
 ```bash
 # After pip install ignition-lint
-ignition-lint path/to/view.json
+ignition-linter path/to/view.json
 
 # Lint multiple files with glob pattern
-ignition-lint --files "**/view.json"
+ignition-linter --files "**/view.json"
 
 # Use custom configuration
-ignition-lint --config my_rules.json --files "views/**/view.json"
+ignition-linter --config my_rules.json --files "views/**/view.json"
 
 # Show help
-ignition-lint --help
+ignition-linter --help
 ```
 
 #### Using Poetry (Development)
 ```bash
 # Using the CLI entry point
-poetry run ignition-lint path/to/view.json
+poetry run ignition-linter path/to/view.json
 
 # Using the module directly
 poetry run python -m ignition_lint path/to/view.json
 
 # If you've activated the Poetry shell
 poetry shell
-ignition-lint path/to/view.json
+ignition-linter path/to/view.json
 ```
 
 ### 2. Pre-commit Hook Integration
@@ -647,10 +647,10 @@ Add to your `.pre-commit-config.yaml`:
 
 ```yaml
 repos:
-  - repo: https://github.com/design-group/ignition-lint
+  - repo: https://github.com/nate-c-foster/ignition-lint
     rev: v0.1.0
     hooks:
-      - id: ignition-lint
+      - id: ignition-linter
         args: [
           "--config", "rule_config.json",
           "--files", "**/*.json"
@@ -675,7 +675,7 @@ pre-commit run
 Create `.github/workflows/ignition-lint.yml`:
 
 ```yaml
-name: Ignition Lint
+name: Ignition Linter
 
 on:
   push:
@@ -696,15 +696,15 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install ignition-lint
-        run: pip install ignition-lint
+      - name: Install ignition-linter
+        run: pip install ignition-linter
 
-      - name: Run ignition-lint
+      - name: Run ignition-linter
         run: |
           # Lint all view.json files in the repository
           find . -name "view.json" -type f | while read file; do
             echo "Linting $file"
-            ignition-lint "$file"
+            ignition-linter"$file"
           done
 ```
 
@@ -715,13 +715,13 @@ For contributors and package developers:
 ```bash
 # Clone and set up development environment
 git clone https://github.com/design-group/ignition-lint.git
-cd ignition-lint
+cd ignition-linter
 
 # Install with Poetry
 poetry install
 
 # Test the package locally
-poetry run ignition-lint tests/cases/PreferredStyle/view.json
+poetry run ignition-linter tests/cases/PreferredStyle/view.json
 
 # Run the full test suite
 cd tests
